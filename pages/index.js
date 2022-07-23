@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 import prisma from "../lib/prisma";
 import { AppBar } from "../components/layout/AppBar";
+import WalletContextProvider from "../src/contexts/WalletContextProvider";
 
 export const getStaticProps = async () => {
   //pull in reservations that belong to this waitlist id
@@ -25,7 +26,9 @@ export const getStaticProps = async () => {
 export default function Home() {
   return (
     <div className={styles.container}>
-      <AppBar />
+      <WalletContextProvider>
+        <AppBar />
+      </WalletContextProvider>
     </div>
   );
 }
